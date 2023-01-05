@@ -50,7 +50,7 @@
     <link rel="stylesheet" href="/css/zanshang.css">
 
     
-    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
 
     
     
@@ -180,10 +180,10 @@
         ">
         
             
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+<script src="/js/instantsearch-2.6.0.min.js"></script>
+<script src="/js/moment-2.22.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/instantsearch-2.6.0.min.css">
+<link rel="stylesheet" type="text/css" href="/css/instantsearch-theme-algolia-2.6.0.min.css">
 
 <div id="search-searchbar"></div>
  <div class="post-list" id="search-hits">
@@ -420,7 +420,7 @@ search.start();
 
 
 <script>
-    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function () {
+    loadAsync("/js/fastclick-1.0.6.min.js", function () {
         var $nav = document.querySelector("nav");
         if ($nav) FastClick.attach($nav);
     })
