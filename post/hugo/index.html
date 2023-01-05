@@ -15,15 +15,15 @@
     
 
     
-    <meta name="title" content="Posts Archive" />
-    <meta property="og:title" content="Posts Archive" />
-    <meta property="twitter:title" content="Posts Archive" />
+    <meta name="title" content="如何利用Github Pages和Hugo搭建个人博客" />
+    <meta property="og:title" content="如何利用Github Pages和Hugo搭建个人博客" />
+    <meta property="twitter:title" content="如何利用Github Pages和Hugo搭建个人博客" />
     
 
     
-    <meta name="description" content="Archive of historical posts.">
-    <meta property="og:description" content="Archive of historical posts." />
-    <meta property="twitter:description" content="Archive of historical posts." />
+    <meta name="description" content="松溪，自由职业者">
+    <meta property="og:description" content="松溪，自由职业者" />
+    <meta property="twitter:description" content="松溪，自由职业者" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="松溪，自由职业, 博客">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Posts Archive | zhwjimmy&#39;s Blog</title>
+    <title>如何利用Github Pages和Hugo搭建个人博客 | zhwjimmy&#39;s Blog</title>
 
-    <link rel="canonical" href="/archive/">
+    <link rel="canonical" href="/post/hugo/">
 
     
     
@@ -151,130 +151,141 @@
 
 
 
-<header class="intro-header" style="background-image: url('/img/bg-03.jpeg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>松溪的博客 </h1>
-                    
-		    <span class="subheading">求知若饥，谦卑若愚</span>
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/bg-03.jpeg')
+    }
+</style>
+
+    <header class="intro-header">
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1>如何利用Github Pages和Hugo搭建个人博客</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            
+                            Posted by
+                            
+                            松溪的博客
+                            
+                            on
+                            Thursday, January 5, 2023
+                            
+                            
+                            
+                            
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
+    
 
 
+    
+    <article>
+        <div class="container">
+            <div class="row">
 
-
-
-<div data-pagefind-ignore="all" class="container">
-    <div class="row">
-   	    <div class="
-            col-lg-8 col-lg-offset-1
-            col-md-8 col-md-offset-1
-            col-sm-12
-            col-xs-12
-            post-container
-        ">
-            <div class="archive-list">
                 
-                
+                <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
                     
-                    
-                        
-                            
-                            <h1 class="title is-4 has-text-weight-normal">2023</h1>
-                        
-                    
-                        
+                    <h3 id="安装hugo">安装Hugo</h3>
+<p>参考<a href="https://gohugo.io/installation/">官方安装文档</a></p>
+<p>推荐几种安装方式</p>
+<h5 id="macos">macOS</h5>
+<pre tabindex="0"><code>$ brew install hugo
+</code></pre><h5 id="go二进制方式">Go二进制方式</h5>
+<pre tabindex="0"><code>$ go install github.com/gohugoio/hugo
+</code></pre><h3 id="使用hugo">使用Hugo</h3>
+<h5 id="创建项目">创建项目</h5>
+<pre tabindex="0"><code>hugo new site 项目名
+</code></pre><h5 id="安装主题">安装主题</h5>
+<p><a href="https://themes.gohugo.io/">官方主题地址</a></p>
+<p>以cleanwhite为例</p>
+<pre tabindex="0"><code>$ cd 项目
+$ git submodule add https://github.com/zhaohuabing/hugo-theme-cleanwhite.git themes/hugo-theme-cleanwhite
+$ cp -r themes/hugo-theme-cleanwhite/exampleSite/config.toml config.toml
+</code></pre><p>主题推荐：</p>
+<ul>
+<li><a href="https://github.com/olOwOlo/hugo-theme-even">https://github.com/olOwOlo/hugo-theme-even</a></li>
+<li><a href="https://github.com/zhaohuabing/hugo-theme-cleanwhite">https://github.com/zhaohuabing/hugo-theme-cleanwhite</a></li>
+</ul>
+<h5 id="运行项目">运行项目</h5>
+<pre tabindex="0"><code>$ hugo server -D
+</code></pre><h5 id="新建帖子">新建帖子</h5>
+<pre tabindex="0"><code>$ hugo new post/xxx.md
+</code></pre><h3 id="参考文档">参考文档</h3>
+<ul>
+<li><a href="https://gohugo.io/documentation/">https://gohugo.io/documentation/</a></li>
+</ul>
+
+
                     
 
-                    <ul>
                     
-                        <li>
-                            <span>01/05</span> — 
-                            <a href="/post/hugo/">
-                                如何利用Github Pages和Hugo搭建个人博客
-                            </a>
+                    <hr>
+                    <ul class="pager">
+                        
+                        <li class="previous">
+                            <a href="/post/chang-hen-ge/" data-toggle="tooltip" data-placement="top"
+                                title="[中文] 《长恨歌》">&larr;
+                                前一篇</a>
                         </li>
-                    
-                        <li>
-                            <span>01/05</span> — 
-                            <a href="/post/chang-hen-ge/">
-                                [中文] 《长恨歌》
-                            </a>
-                        </li>
-                    
+                        
+                        
                     </ul>
+                    
+
+                    
+
+
+
+                </div>
 
                 
                 
+                <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                    <div class="side-catalog">
+                        <hr class="hidden-sm hidden-xs">
+                        <ul class="catalog-body"></ul>
+                    </div>
+                </div>
+                
+
+                
+                <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                    
+                    
+
+                    
+                    
+                </div>
             </div>
-       	</div>
-        
-
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-	
-    <section class="visible-md visible-lg">
-	
-        <div class="short-about">
-            
-            <a href="/about">
-               <img src="/img/avatar.png" alt="avatar" style="cursor: pointer" />
-            </a>
-            
-            
-                <p>松溪</p>
-            
-           
-           <ul class="list-inline">
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-            
-            
-               
-               
-               
-               
-                </ul>
-            </div>
-    </section>
-	
-    
-    
-    
-    
+        </div>
+    </article>
 
     
-    
-    
-</div>
-
-	</div>
-</div>
-
-
-<hr />
-
 
 
 <footer>
