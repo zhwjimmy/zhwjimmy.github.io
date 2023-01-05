@@ -13,11 +13,11 @@
       <pubDate>Thu, 05 Jan 2023 14:17:38 +0800</pubDate>
       
       <guid>https://zhwjimmy.github.io/post/hugo/</guid>
-      <description>安装Hugo 参考官方安装文档 推荐几种安装方式 macOS $ brew install hugo Go二进制方式 $ go install github.com/gohugoio/hugo 使用Hugo 创建项目 hugo new site 项目名 安装主题 官方主题地址 以clean</description>
+      <description>如果希望快速、免费的搭建一个博客网站，那么Github Pages + Hugo是一个很好的方案。Hugo是用Go语言编写的博客工具，用户可以使用Mark</description>
     </item>
     
     <item>
-      <title>[中文] 《长恨歌》</title>
+      <title>《长恨歌》</title>
       <link>https://zhwjimmy.github.io/post/chang-hen-ge/</link>
       <pubDate>Thu, 05 Jan 2023 12:24:21 +0800</pubDate>
       

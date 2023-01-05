@@ -202,20 +202,30 @@
                 post-container">
 
                     
-                    <h3 id="安装hugo">安装Hugo</h3>
+                    <p>如果希望快速、免费的搭建一个博客网站，那么Github Pages + Hugo是一个很好的方案。Hugo是用Go语言编写的博客工具，用户可以使用Markdown编写博客内容，然后通过Hugo生成静态页面；Github Pages是Github提供的一项静态站点托管服务，利用该服务用户可以直接发布网站，无需额外申请域名和服务器。</p>
+<h3 id="1-创建github-pages">1. 创建Github Pages</h3>
+<ol>
+<li>申请github账号并登录。github地址：<a href="https://github.com/">https://github.com/</a></li>
+<li>页面右上角，使用 + 下拉菜单选择“New repository”。</li>
+<li>输入 username.github.io 作为存储库名称。 将 username 替换为你的 GitHub 用户名。 例如，如果用户名为 octocat，则存储库名称应为 octocat.github.io。</li>
+</ol>
+<p>此时，Github Pages就已经创建完成，下一步安装Hugo工具。</p>
+<h3 id="2-安装hugo及创建项目">2. 安装Hugo及创建项目</h3>
+<h5 id="21-安装hugo">2.1 安装Hugo</h5>
 <p>参考<a href="https://gohugo.io/installation/">官方安装文档</a></p>
-<p>推荐几种安装方式</p>
-<h5 id="macos">macOS</h5>
-<pre tabindex="0"><code>$ brew install hugo
-</code></pre><h5 id="go二进制方式">Go二进制方式</h5>
-<pre tabindex="0"><code>$ go install github.com/gohugoio/hugo
-</code></pre><h3 id="使用hugo">使用Hugo</h3>
-<h5 id="创建项目">创建项目</h5>
-<pre tabindex="0"><code>hugo new site 项目名
-</code></pre><h5 id="安装主题">安装主题</h5>
-<p><a href="https://themes.gohugo.io/">官方主题地址</a></p>
-<p>以cleanwhite为例</p>
-<pre tabindex="0"><code>$ cd 项目
+<pre tabindex="0"><code>推荐几种安装方式
+
+# macOS
+$ brew install hugo
+
+# Go二进制方式
+$ go install github.com/gohugoio/hugo
+</code></pre><h5 id="22-创建项目">2.2 创建项目</h5>
+<pre tabindex="0"><code>$ hugo new site 项目名
+</code></pre><h5 id="23-安装主题">2.3 安装主题</h5>
+<p>可以挑选喜欢的网站主题并设置。<a href="https://themes.gohugo.io/">官方主题地址</a></p>
+<pre tabindex="0"><code># 以cleanwhite为例
+$ cd 项目
 $ git submodule add https://github.com/zhaohuabing/hugo-theme-cleanwhite.git themes/hugo-theme-cleanwhite
 $ cp -r themes/hugo-theme-cleanwhite/exampleSite/config.toml config.toml
 </code></pre><p>主题推荐：</p>
@@ -223,13 +233,48 @@ $ cp -r themes/hugo-theme-cleanwhite/exampleSite/config.toml config.toml
 <li><a href="https://github.com/olOwOlo/hugo-theme-even">https://github.com/olOwOlo/hugo-theme-even</a></li>
 <li><a href="https://github.com/zhaohuabing/hugo-theme-cleanwhite">https://github.com/zhaohuabing/hugo-theme-cleanwhite</a></li>
 </ul>
-<h5 id="运行项目">运行项目</h5>
-<pre tabindex="0"><code>$ hugo server -D
-</code></pre><h5 id="新建帖子">新建帖子</h5>
-<pre tabindex="0"><code>$ hugo new post/xxx.md
+<p>tips：主题可以等后面熟悉了hugo项目后再深入研究</p>
+<h5 id="24-hugo常用命令">2.4 Hugo常用命令</h5>
+<pre tabindex="0"><code># 新建文章
+$ hugo new post/xxx.md
+
+# 本地预览（包含草稿）
+$ hugo server -D
+
+# 生成静态文件。生成的静态文件位于public目录下
+$ hugo
+</code></pre><h3 id="3-网站发布到github-pages">3. 网站发布到Github Pages</h3>
+<pre tabindex="0"><code># 将文章生成静态文件
+$ hugo // 静态文件位于public目录下
+
+# 进入public目录
+$ cd public
+
+# 初始化项目
+$ git init
+$ git add .
+$ git commit -m &#34;init&#34;
+$ git remote add origin git@github.com:xxx/xxx.github.io.git 
+$ git push -u origin master
+
+# 打开github上xxx项目，此时已经可以看到仓库中已经有代码，代码内容即public中内容
+# 访问 xxx.github.io 网址，即可看到对应内容
+</code></pre><p>tips：hugo创建的xxx是源项目，xxx下的public目录是对应的github.io内容。如果xxx也想建立Git仓库的话，推荐使用git submodule方式进行管理。</p>
+<pre tabindex="0"><code># 项目根目录下操作
+$ rm -rf public
+$ git submodule add git@github.com:xxx/xxx.github.io.git public
+
+# 后续变更代码，要提交public子目录和xxx根目录两个项目的代码
+
+# 删除子模块
+1. rm -rf 子模块目录 删除子模块目录及源码
+2. vi .gitmodules 删除项目目录下.gitmodules文件中子模块相关条目
+3. vi .git/config 删除配置项中子模块相关条目
+4. rm .git/module/* 删除模块下的子模块目录，每个子模块对应一个目录，注意只删除对应的子模块目录即可
 </code></pre><h3 id="参考文档">参考文档</h3>
 <ul>
 <li><a href="https://gohugo.io/documentation/">https://gohugo.io/documentation/</a></li>
+<li><a href="https://docs.github.com/zh/pages/quickstart">https://docs.github.com/zh/pages/quickstart</a></li>
 </ul>
 
 
@@ -241,7 +286,7 @@ $ cp -r themes/hugo-theme-cleanwhite/exampleSite/config.toml config.toml
                         
                         <li class="previous">
                             <a href="/post/chang-hen-ge/" data-toggle="tooltip" data-placement="top"
-                                title="[中文] 《长恨歌》">&larr;
+                                title="《长恨歌》">&larr;
                                 前一篇</a>
                         </li>
                         
