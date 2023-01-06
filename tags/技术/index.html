@@ -21,9 +21,9 @@
     
 
     
-    <meta name="description" content="松溪，自由职业者">
-    <meta property="og:description" content="松溪，自由职业者" />
-    <meta property="twitter:description" content="松溪，自由职业者" />
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
     
 
     
@@ -31,10 +31,10 @@
     
     
 
-    <meta name="keyword"  content="松溪，自由职业, 博客">
-    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>技术 | zhwjimmy&#39;s Blog</title>
+    <title>技术 | </title>
 
     <link rel="canonical" href="/tags/%E6%8A%80%E6%9C%AF/">
 
@@ -186,8 +186,8 @@
 	
         <div class="post-content-preview">
 	
-            如果希望快速、免费的搭建一个博客网站，那么Github Pages + Hugo是一个很好的方案。Hugo是用Go语言编写的博客工具，用户可以使用Mark
-       
+            如果希望快速、免费的搭建一个博客网站，那么Github Pages &#43; Hugo是一个很好的方案
+        
         </div>
     </a>
     <p class="post-meta">
@@ -258,6 +258,21 @@
     
     
     
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>FEATURED TAGS</h5>
+        <div class="tags">
+            
+            
+               
+            
+               
+            
+               
+            
+        </div>
+    </section>
+    
 
     
     
@@ -275,13 +290,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
+                <ul class="list-inline text-center">                  
                     
                     
                     
                     
                     
 
+		            
                     
                     
                     
@@ -293,13 +309,14 @@
                     
                     
                     
-                    
-                    
-                    
-                    
-                    
-                </ul>
-                <p class="copyright text-muted">Copyright &copy; 松溪的博客 2023
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; 松溪的博客 2023
+                    <br>
                 </p>
             </div>
         </div>
@@ -311,12 +328,12 @@
 
 <script>
     function loadAsync(u, c) {
-        var d = document, t = 'script',
-            o = d.createElement(t),
-            s = d.getElementsByTagName(t)[0];
-        o.src = u;
-        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-        s.parentNode.insertBefore(o, s);
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
     }
 </script>
 
@@ -327,11 +344,11 @@
 
 <script>
     
-    if ($('#tag_cloud').length !== 0) {
-        loadAsync("/js/jquery.tagcloud.js", function () {
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 
-                color: { start: '#bbbbee', end: '#0085a1' },
+                color: {start: '#bbbbee', end: '#0085a1'},
             };
             $('#tag_cloud a').tagcloud();
         })
@@ -340,9 +357,9 @@
 
 
 <script>
-    loadAsync("/js/fastclick-1.0.6.min.js", function () {
+    loadAsync("https://lib.baomitu.com/fastclick/1.0.6/fastclick.min.js", function(){
         var $nav = document.querySelector("nav");
-        if ($nav) FastClick.attach($nav);
+        if($nav) FastClick.attach($nav);
     })
 </script>
 
@@ -355,7 +372,7 @@
         
         
         
-        _containerSelector = 'div.post-container'
+            _containerSelector = 'div.post-container'
         
 
         
@@ -388,7 +405,7 @@
     
 
 
-    loadAsync("/js/jquery.nav.js", function () {
+    loadAsync("\/js\/jquery.nav.js", function () {
         $('.catalog-body').onePageNav({
             currentClass: "active",
             changeHash: !1,
@@ -404,6 +421,7 @@
         });
     });
 </script>
+
 
 
 

@@ -31,10 +31,10 @@
     
     
 
-    <meta name="keyword"  content="松溪，自由职业, 博客">
-    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Posts Archive | zhwjimmy&#39;s Blog</title>
+    <title>Posts Archive | </title>
 
     <link rel="canonical" href="/archive/">
 
@@ -198,7 +198,7 @@
                     
                         <li>
                             <span>01/05</span> — 
-                            <a href="/post/chang-hen-ge/">
+                            <a href="/post/chinese-preview/">
                                 《长恨歌》
                             </a>
                         </li>
@@ -259,6 +259,21 @@
     
     
     
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>FEATURED TAGS</h5>
+        <div class="tags">
+            
+            
+               
+            
+               
+            
+               
+            
+        </div>
+    </section>
+    
 
     
     
@@ -277,13 +292,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
+                <ul class="list-inline text-center">                  
                     
                     
                     
                     
                     
 
+		            
                     
                     
                     
@@ -295,13 +311,14 @@
                     
                     
                     
-                    
-                    
-                    
-                    
-                    
-                </ul>
-                <p class="copyright text-muted">Copyright &copy; 松溪的博客 2023
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; 松溪的博客 2023
+                    <br>
                 </p>
             </div>
         </div>
@@ -313,12 +330,12 @@
 
 <script>
     function loadAsync(u, c) {
-        var d = document, t = 'script',
-            o = d.createElement(t),
-            s = d.getElementsByTagName(t)[0];
-        o.src = u;
-        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-        s.parentNode.insertBefore(o, s);
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
     }
 </script>
 
@@ -329,11 +346,11 @@
 
 <script>
     
-    if ($('#tag_cloud').length !== 0) {
-        loadAsync("/js/jquery.tagcloud.js", function () {
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 
-                color: { start: '#bbbbee', end: '#0085a1' },
+                color: {start: '#bbbbee', end: '#0085a1'},
             };
             $('#tag_cloud a').tagcloud();
         })
@@ -342,9 +359,9 @@
 
 
 <script>
-    loadAsync("/js/fastclick-1.0.6.min.js", function () {
+    loadAsync("https://lib.baomitu.com/fastclick/1.0.6/fastclick.min.js", function(){
         var $nav = document.querySelector("nav");
-        if ($nav) FastClick.attach($nav);
+        if($nav) FastClick.attach($nav);
     })
 </script>
 
@@ -357,7 +374,7 @@
         
         
         
-        _containerSelector = 'div.post-container'
+            _containerSelector = 'div.post-container'
         
 
         
@@ -390,7 +407,7 @@
     
 
 
-    loadAsync("/js/jquery.nav.js", function () {
+    loadAsync("\/js\/jquery.nav.js", function () {
         $('.catalog-body').onePageNav({
             currentClass: "active",
             changeHash: !1,
@@ -406,6 +423,7 @@
         });
     });
 </script>
+
 
 
 

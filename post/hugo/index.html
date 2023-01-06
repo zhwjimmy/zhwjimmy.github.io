@@ -21,9 +21,9 @@
     
 
     
-    <meta name="description" content="松溪，自由职业者">
-    <meta property="og:description" content="松溪，自由职业者" />
-    <meta property="twitter:description" content="松溪，自由职业者" />
+    <meta name="description" content="如果希望快速、免费的搭建一个博客网站，那么Github Pages &#43; Hugo是一个很好的方案">
+    <meta property="og:description" content="如果希望快速、免费的搭建一个博客网站，那么Github Pages &#43; Hugo是一个很好的方案" />
+    <meta property="twitter:description" content="如果希望快速、免费的搭建一个博客网站，那么Github Pages &#43; Hugo是一个很好的方案" />
     
 
     
@@ -31,10 +31,10 @@
     
     
 
-    <meta name="keyword"  content="松溪，自由职业, 博客">
-    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>如何利用Github Pages和Hugo搭建个人博客 | zhwjimmy&#39;s Blog</title>
+    <title>如何利用Github Pages和Hugo搭建个人博客 | </title>
 
     <link rel="canonical" href="/post/hugo/">
 
@@ -289,7 +289,7 @@ $ git submodule add git@github.com:xxx/xxx.github.io.git public
                     <ul class="pager">
                         
                         <li class="previous">
-                            <a href="/post/chang-hen-ge/" data-toggle="tooltip" data-placement="top"
+                            <a href="/post/chinese-preview/" data-toggle="tooltip" data-placement="top"
                                 title="《长恨歌》">&larr;
                                 前一篇</a>
                         </li>
@@ -326,6 +326,21 @@ $ git submodule add git@github.com:xxx/xxx.github.io.git public
 
                     
                     
+                    <section>
+                        <hr class="hidden-sm hidden-xs">
+                        <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                        <div class="tags">
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        </div>
+                    </section>
+                    
 
                     
                     
@@ -341,13 +356,14 @@ $ git submodule add git@github.com:xxx/xxx.github.io.git public
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
+                <ul class="list-inline text-center">                  
                     
                     
                     
                     
                     
 
+		            
                     
                     
                     
@@ -359,13 +375,14 @@ $ git submodule add git@github.com:xxx/xxx.github.io.git public
                     
                     
                     
-                    
-                    
-                    
-                    
-                    
-                </ul>
-                <p class="copyright text-muted">Copyright &copy; 松溪的博客 2023
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; 松溪的博客 2023
+                    <br>
                 </p>
             </div>
         </div>
@@ -377,12 +394,12 @@ $ git submodule add git@github.com:xxx/xxx.github.io.git public
 
 <script>
     function loadAsync(u, c) {
-        var d = document, t = 'script',
-            o = d.createElement(t),
-            s = d.getElementsByTagName(t)[0];
-        o.src = u;
-        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-        s.parentNode.insertBefore(o, s);
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
     }
 </script>
 
@@ -393,11 +410,11 @@ $ git submodule add git@github.com:xxx/xxx.github.io.git public
 
 <script>
     
-    if ($('#tag_cloud').length !== 0) {
-        loadAsync("/js/jquery.tagcloud.js", function () {
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 
-                color: { start: '#bbbbee', end: '#0085a1' },
+                color: {start: '#bbbbee', end: '#0085a1'},
             };
             $('#tag_cloud a').tagcloud();
         })
@@ -406,9 +423,9 @@ $ git submodule add git@github.com:xxx/xxx.github.io.git public
 
 
 <script>
-    loadAsync("/js/fastclick-1.0.6.min.js", function () {
+    loadAsync("https://lib.baomitu.com/fastclick/1.0.6/fastclick.min.js", function(){
         var $nav = document.querySelector("nav");
-        if ($nav) FastClick.attach($nav);
+        if($nav) FastClick.attach($nav);
     })
 </script>
 
@@ -421,7 +438,7 @@ $ git submodule add git@github.com:xxx/xxx.github.io.git public
         
         
         
-        _containerSelector = 'div.post-container'
+            _containerSelector = 'div.post-container'
         
 
         
@@ -454,7 +471,7 @@ $ git submodule add git@github.com:xxx/xxx.github.io.git public
     
 
 
-    loadAsync("/js/jquery.nav.js", function () {
+    loadAsync("\/js\/jquery.nav.js", function () {
         $('.catalog-body').onePageNav({
             currentClass: "active",
             changeHash: !1,
@@ -470,6 +487,7 @@ $ git submodule add git@github.com:xxx/xxx.github.io.git public
         });
     });
 </script>
+
 
 
 
