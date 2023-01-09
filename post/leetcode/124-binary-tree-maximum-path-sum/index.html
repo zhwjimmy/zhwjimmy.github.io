@@ -19,19 +19,24 @@ post-container"><p>二叉树中的最大路径和问题指的是，给定一棵�
 最后，我们将求出的三个路径和取最大值，并将其与全局最大路径和 maxSum 进行比较，将较大的值赋给 maxSum。</p><p>下面是一个用 Go 语言实现的代码示例：</p><pre tabindex=0><code>var maxSum int
 
 func maxPathSum(root *TreeNode) int {
-    maxSum = math.MinInt32
-    helper(root)
-    return maxSum
+	maxSum = math.MinInt32
+	handle(root)
+	return maxSum
 }
 
-func helper(root *TreeNode) int {
-    if root == nil {
-        return 0
-    }
-    leftMax := max(0, helper(root.Left))
-    rightMax := max(0, helper(root.Right))
-    maxSum = max(maxSum, root.Val + leftMax + rightMax)
-    return root.Val + max(leftMax, rightMax)
+func handle(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+	leftMax := max(0, handle(root.Left))
+	rightMax := max(0, handle(root.Right))
+
+	sum := root.Val + leftMax + rightMax
+	if sum &gt; maxSum {
+		maxSum = sum
+	}
+
+	return root.Val + max(leftMax, rightMax)
 }
 
 func max(x, y int) int {
@@ -40,8 +45,8 @@ func max(x, y int) int {
     }
     return y
 }
-</code></pre><p>在这段代码中，我们使用了一个变量 maxSum 来记录全局最大路径和。每次递归时，我们都将当前路径和与 maxSum 进行比较，将较大的值赋给 maxSum。</p><p>在函数 helper 中，我们首先求出以左子树的根节点为起点的最大路径和 leftMax 和以右子树的根节点为起点的最大路径和 rightMax。然后，我们将求出的三个路径和取最大值，并将其与全局最大路径和 maxSum 进行比较，将较大的值赋给 maxSum。最后，我们返回以当前节点为根的子树中，以当前节点为起点的最大路径和。</p><p>注意，在计算 leftMax 和 rightMax 时，我们需要比较以当前节点为根的子树中，以当前节点为起点的最大路径和和 0的大小，并取较大的值。这是因为，在求最大路径和时，我们需要考虑负数的情况。如果当前节点的权值是负数，并且它的子树中的最大路径和也是负数，那么将它们相加得到的结果可能会比 0 还要小，因此我们需要舍弃当前节点的子树中的最大路径和。</p><p>在本题中，由于我们需要求解的是从根节点出发的路径，因此我们在递归过程中还需要考虑从当前节点出发的路径的最大值，因此我们在返回结果时，还需要取当前节点的权值 root.Val 和以左子树的根节点为起点的最大路径和 leftMax 和以右子树的根节点为起点的最大路径和 rightMax 之间的最大值。</p><blockquote><p>原文地址：<a href=https://zhwjimmy.github.io/post/leetcode/124-binary-tree-maximum-path-sum>124. 二叉树中的最大路径和</a></p></blockquote><hr><ul class=pager><li class=previous><a href=/post/hugo/ data-toggle=tooltip data-placement=top title="如何利用Github Pages和Hugo搭建个人博客">&larr;
-前一篇</a></li><li class=next><a href=/post/leetcode/leetcode-summary/ data-toggle=tooltip data-placement=top title=Leetcode题型分类总结>下一篇 &rarr;</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
+</code></pre><p>在这段代码中，我们使用了一个变量 maxSum 来记录全局最大路径和。每次递归时，我们都将当前路径和与 maxSum 进行比较，将较大的值赋给 maxSum。</p><p>在函数 helper 中，我们首先求出以左子树的根节点为起点的最大路径和 leftMax 和以右子树的根节点为起点的最大路径和 rightMax。然后，我们将求出的三个路径和取最大值，并将其与全局最大路径和 maxSum 进行比较，将较大的值赋给 maxSum。最后，我们返回以当前节点为根的子树中，以当前节点为起点的最大路径和。</p><p>注意，在计算 leftMax 和 rightMax 时，我们需要比较以当前节点为根的子树中，以当前节点为起点的最大路径和和 0的大小，并取较大的值。这是因为，在求最大路径和时，我们需要考虑负数的情况。如果当前节点的权值是负数，并且它的子树中的最大路径和也是负数，那么将它们相加得到的结果可能会比 0 还要小，因此我们需要舍弃当前节点的子树中的最大路径和。</p><p>在本题中，由于我们需要求解的是从根节点出发的路径，因此我们在递归过程中还需要考虑从当前节点出发的路径的最大值，因此我们在返回结果时，还需要取当前节点的权值 root.Val 和以左子树的根节点为起点的最大路径和 leftMax 和以右子树的根节点为起点的最大路径和 rightMax 之间的最大值。</p><blockquote><p>原文地址：<a href=https://zhwjimmy.github.io/post/leetcode/124-binary-tree-maximum-path-sum>124. 二叉树中的最大路径和</a></p></blockquote><hr><ul class=pager><li class=previous><a href=/post/leetcode/leetcode-summary/ data-toggle=tooltip data-placement=top title=Leetcode题型分类总结>&larr;
+前一篇</a></li><li class=next><a href=/post/leetcode/105-construct-binary-tree-from-preorder-and-inorder-traversal/ data-toggle=tooltip data-placement=top title="105. 从前序与中序遍历序列构造二叉树">下一篇 &rarr;</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
 visible-lg-block
 sidebar-container
 catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
