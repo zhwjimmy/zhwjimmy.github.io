@@ -16,7 +16,7 @@ col-md-10 col-md-offset-1
 post-container"><p>二叉树中的最大路径和问题指的是，给定一棵二叉树，求出其中一条从根节点出发，到叶子节点结束的路径，使得该路径上节点的权值之和最大。</p><p>解决这个问题的思路是，使用递归的方法求解。</p><p>我们可以设计一个函数 maxPathSum(root *TreeNode) int，用来求解以 root 为根的二叉树中的最大路径和。</p><p>我们可以用一个变量 maxSum 来表示全局最大路径和。每次递归时，我们都将当前路径和与 maxSum 进行比较，将较大的值赋给 maxSum。</p><p>具体的，我们可以这样做：</p><p>先求出以左子树的根节点为起点的最大路径和，即 maxPathSum(root.Left)。
 再求出以右子树的根节点为起点的最大路径和，即 maxPathSum(root.Right)。
 求出以当前节点为根的子树中，以当前节点为起点的最大路径和，即 root.Val + leftMax + rightMax，其中 leftMax 和 rightMax 分别表示左子树和右子树中以当前节点为根的最大路径和。
-最后，我们将求出的三个路径和取最大值，并将其与全局最大路径和 maxSum 进行比较，将较大的值赋给 maxSum。</p><p>下面是一个用 Go 语言实现的代码示例：</p><pre tabindex=0><code>var maxSum int
+最后，我们将求出的三个路径和取最大值，并将其与全局最大路径和 maxSum 进行比较，将较大的值赋给 maxSum。</p><p>代码实现如下：</p><pre tabindex=0><code>var maxSum int
 
 func maxPathSum(root *TreeNode) int {
 	maxSum = math.MinInt32

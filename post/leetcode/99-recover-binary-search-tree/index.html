@@ -1,0 +1,147 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:site_name" content="松溪夜谈"><meta property="og:type" content="article"><meta name=title content="99. 恢复二叉搜索树"><meta name=description content><link rel="shortcut icon" href=/img/favicon.ico><title>99. 恢复二叉搜索树 | 松溪夜谈</title><link rel=canonical href=/post/leetcode/99-recover-binary-search-tree/><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/hugo-theme-cleanwhite.min.css><link rel=stylesheet href=/css/zanshang.css><link href=https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css rel=stylesheet type=text/css><script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js></script>
+<script src=/js/hux-blog.min.js></script>
+<script src=/js/lazysizes.min.js></script></head><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span></button>
+<a class=navbar-brand href=/>松溪夜谈</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/>All Posts</a></li><li><a href=/categories/tech>tech</a></li><li><a href=/archive/>ARCHIVE</a></li><li><a href=/tags/>TAGS</a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse");$toggle.addEventListener("click",handleMagic);function handleMagic(){$navbar.className.indexOf("in")>0?($navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)):($collapse.style.height="auto",$navbar.className+=" in")}</script><style type=text/css>header.intro-header{background-image:url(https://i.imgtg.com/2023/01/06/GKiaC.jpg)}</style><header class=intro-header><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><div class=tags><a class=tag href=/tags/%E9%9D%A2%E8%AF%95 title=面试>面试</a>
+<a class=tag href=/tags/leetcode title=leetcode>leetcode</a>
+<a class=tag href=/tags/%E4%BA%8C%E5%8F%89%E6%A0%91 title=二叉树>二叉树</a></div><h1>99. 恢复二叉搜索树</h1><h2 class=subheading>Recover Binary Search Tree</h2><span class=meta>Posted by
+松溪
+on
+Monday, January 9, 2023</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+post-container"><h3 id=解法一>解法一</h3><p>这道题的目标是在给定的二叉搜索树中的两个节点被交换了位置之后，恢复原来的树。</p><p>这道题的解法是使用中序遍历。由于在二叉搜索树中，中序遍历的结果应该是升序的，所以我们可以通过对树进行中序遍历，然后检查是否存在两个顺序错误的节点。如果存在，则这两个节点就是被交换的节点。</p><p>我们可以使用递归的方式来进行中序遍历。在递归函数中，我们需要维护一个变量来跟踪当前节点是否为第一个顺序错误的节点。如果是，则将该节点记录下来，并继续遍历剩余的树。如果遍历完整棵树后发现还存在一个顺序错误的节点，则说明这两个节点就是被交换的节点。我们只需要将这两个节点的值交换即可。</p><p>代码实现如下：</p><pre tabindex=0><code>/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func recoverTree(root *TreeNode) {
+    // 用于记录顺序错误的节点
+    var firstNode, secondNode *TreeNode
+
+    // 用于记录当前节点是否为第一个顺序错误的节点
+    var isFirst bool
+
+    // 前驱节点，用于检查当前节点是否存在顺序错误
+    var predecessor *TreeNode
+
+    var traverse func(*TreeNode)
+    traverse = func(node *TreeNode) {
+        if node == nil {
+            return
+        }
+
+        // 遍历左子树
+        traverse(node.Left)
+
+        // 检查当前节点是否存在顺序错误
+        if predecessor != nil &amp;&amp; node.Val &lt; predecessor.Val {
+            if !isFirst {
+                // 如果是第一个顺序错误的节点，则将其记录下来
+                firstNode = predecessor
+                secondNode = node
+                isFirst = true
+            } else {
+                // 如果已经找到了第一个顺序错误的节点，则说明第二个顺序错误的节点已经找到，可以结束遍历
+                return
+            }
+        }
+        predecessor = node
+
+        // 遍历右子树
+        traverse(node.Right)
+    }
+
+    traverse(root)
+
+    // 交换节点的值
+    firstNode.Val, secondNode.Val = secondNode.Val, firstNode.Val
+}
+</code></pre><p>该算法的时间复杂度为 O(n)，因为我们遍历了整棵树。空间复杂度也是 O(n)，因为我们使用了递归，在最坏情况下需要使用 O(n) 的空间。</p><h3 id=解法二推荐>解法二（推荐）</h3><p>这道题目的解法是二叉搜索树中序遍历的逆过程。首先，你需要实现一个二叉树的中序遍历函数，然后找到二叉树中的两个错误节点，交换它们的值。</p><p>代码实现如下：</p><pre tabindex=0><code>/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+
+// 中序遍历二叉树
+func inorderTraversal(root *TreeNode) []int {
+    if root == nil {
+        return []int{}
+    }
+
+    res := inorderTraversal(root.Left)
+    res = append(res, root.Val)
+    res = append(res, inorderTraversal(root.Right)...)
+
+    return res
+}
+
+func recoverTree(root *TreeNode) {
+    if root == nil {
+        return
+    }
+
+    // 中序遍历二叉树
+    inorder := inorderTraversal(root)
+
+    // 找到第一个和第二个错误节点
+    var first, second *TreeNode
+    for i := 0; i &lt; len(inorder)-1; i++ {
+        if inorder[i] &gt; inorder[i+1] {
+            if first == nil {
+                first = findNode(root, inorder[i])
+                second = findNode(root, inorder[i+1])
+            } else {
+                second = findNode(root, inorder[i+1])
+                break
+            }
+        }
+    }
+
+    // 交换两个节点的值
+    first.Val, second.Val = second.Val, first.Val
+}
+
+// 递归查找二叉树中的节点
+func findNode(root *TreeNode, val int) *TreeNode {
+    if root == nil {
+        return nil
+    }
+
+    if root.Val == val {
+        return root
+    }
+
+    left := findNode(root.Left, val)
+    if left != nil {
+        return left
+    }
+
+    right := findNode(root.Right, val)
+    if right != nil {
+        return right
+    }
+
+    return nil
+}
+</code></pre><blockquote><p>原文地址：<a href=https://zhwjimmy.github.io/post/leetcode/99-recover-binary-search-tree>99. 恢复二叉搜索树</a></p></blockquote><hr><ul class=pager><li class=previous><a href=/post/leetcode/106-construct-binary-tree-from-inorder-and-postorder-traversal/ data-toggle=tooltip data-placement=top title="106. 从中序与后序遍历序列构造二叉树">&larr;
+前一篇</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
+visible-lg-block
+sidebar-container
+catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5><a href=/tags/>TAGS</a></h5><div class=tags><a href=/tags/leetcode title=leetcode>leetcode</a>
+<a href=/tags/%E4%BA%8C%E5%8F%89%E6%A0%91 title=二叉树>二叉树</a>
+<a href=/tags/%E6%8A%80%E6%9C%AF title=技术>技术</a>
+<a href=/tags/%E6%95%99%E7%A8%8B title=教程>教程</a>
+<a href=/tags/%E6%96%87%E5%AD%A6 title=文学>文学</a>
+<a href=/tags/%E9%9D%A2%E8%AF%95 title=面试>面试</a></div></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"></ul><p class="copyright text-muted">Copyright &copy; 松溪夜谈 2023<br></p></div></div></div></footer><script>function loadAsync(i,t){var n=document,s="script",e=n.createElement(s),o=n.getElementsByTagName(s)[0];e.src=i,t&&e.addEventListener("load",function(e){t(null,e)},!1),o.parentNode.insertBefore(e,o)}</script><script>$("#tag_cloud").length!==0&&loadAsync("/js/jquery.tagcloud.js",function(){$.fn.tagcloud.defaults={color:{start:"#bbbbee",end:"#0085a1"}},$("#tag_cloud a").tagcloud()})</script><script>loadAsync("https://lib.baomitu.com/fastclick/1.0.6/fastclick.min.js",function(){var e=document.querySelector("nav");e&&FastClick.attach(e)})</script><script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var r=$(_containerSelector),s,o,i,a,t,n=r.find("h1,h2,h3,h4,h5,h6");return $(e).html(''),n.each(function(){s=$(this).prop("tagName").toLowerCase(),a="#"+$(this).prop("id"),o=$(this).text(),t=$('<a href="'+a+'" rel="nofollow">'+o+"</a>"),i=$('<li class="'+s+'_nav"></li>').append(t),$(e).append(i)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")}),loadAsync("/js/jquery.nav.js",function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script></body></html>
