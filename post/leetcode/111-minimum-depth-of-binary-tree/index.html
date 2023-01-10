@@ -1,4 +1,4 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:site_name" content="松溪夜谈"><meta property="og:type" content="article"><meta name=title content="103. 二叉树的锯齿形层序遍历"><meta name=description content><link rel="shortcut icon" href=/img/favicon.ico><title>103. 二叉树的锯齿形层序遍历 | 松溪夜谈</title><link rel=canonical href=/post/leetcode/103-binary-tree-zigzag-level-order-traversal/><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/hugo-theme-cleanwhite.min.css><link rel=stylesheet href=/css/zanshang.css><link href=https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css rel=stylesheet type=text/css><script src=/js/jquery.min.js></script>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:site_name" content="松溪夜谈"><meta property="og:type" content="article"><meta name=title content="111. 二叉树的最小深度"><meta name=description content><link rel="shortcut icon" href=/img/favicon.ico><title>111. 二叉树的最小深度 | 松溪夜谈</title><link rel=canonical href=/post/leetcode/111-minimum-depth-of-binary-tree/><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/hugo-theme-cleanwhite.min.css><link rel=stylesheet href=/css/zanshang.css><link href=https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css rel=stylesheet type=text/css><script src=/js/jquery.min.js></script>
 <script src=/js/bootstrap.min.js></script>
 <script src=/js/hux-blog.min.js></script>
 <script src=/js/lazysizes.min.js></script></head><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
@@ -8,12 +8,12 @@
 <span class=icon-bar></span></button>
 <a class=navbar-brand href=/>松溪夜谈</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/>All Posts</a></li><li><a href=/categories/tech>tech</a></li><li><a href=/archive/>ARCHIVE</a></li><li><a href=/tags/>TAGS</a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse");$toggle.addEventListener("click",handleMagic);function handleMagic(){$navbar.className.indexOf("in")>0?($navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)):($collapse.style.height="auto",$navbar.className+=" in")}</script><style type=text/css>header.intro-header{background-image:url(https://i.imgtg.com/2023/01/06/GKiaC.jpg)}</style><header class=intro-header><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><div class=tags><a class=tag href=/tags/%E9%9D%A2%E8%AF%95 title=面试>面试</a>
 <a class=tag href=/tags/leetcode title=leetcode>leetcode</a>
-<a class=tag href=/tags/%E4%BA%8C%E5%8F%89%E6%A0%91 title=二叉树>二叉树</a></div><h1>103. 二叉树的锯齿形层序遍历</h1><h2 class=subheading>Binary Tree Zigzag Level Order Traversal</h2><span class=meta>Posted by
+<a class=tag href=/tags/%E4%BA%8C%E5%8F%89%E6%A0%91 title=二叉树>二叉树</a></div><h1>111. 二叉树的最小深度</h1><h2 class=subheading>Minimum Depth of Binary Tree</h2><span class=meta>Posted by
 松溪
 on
 Tuesday, January 10, 2023</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
-post-container"><p>可以使用队列来帮助实现层次遍历。首先将根节点入队，然后不断从队列中取出节点并将节点的左右子节点入队，直到队列为空。可以使用一个标志位来判断当前遍历的是奇数层还是偶数层，如果是奇数层，则将当前节点的值插入到结果切片的末尾；如果是偶数层，则将当前节点的值插入到结果切片的头部。</p><p>代码实现如下：</p><pre tabindex=0><code>/**
+post-container"><p>求一棵树的最小深度时，递归访问每个节点并求出它的最小深度是一种常用的方法。</p><p>代码实现如下：</p><pre tabindex=0><code>/**
  * Definition for a binary tree node.
  * type TreeNode struct {
  *     Val int
@@ -21,40 +21,30 @@ post-container"><p>可以使用队列来帮助实现层次遍历。首先将根�
  *     Right *TreeNode
  * }
  */
-func zigzagLevelOrder(root *TreeNode) [][]int {
-    var res [][]int
-
+func minDepth(root *TreeNode) int {
     if root == nil {
-        return res
+        return 0
     }
 
-    queue := []*TreeNode{root}
-    flag := true
-    for len(queue) &gt; 0 {
-        n := len(queue)
-        temp := make([]int, 0, n)
-        for i := 0; i &lt; n; i++ {
-            if flag {
-                temp = append(temp, queue[i].Val)
-            } else {
-                temp = append([]int{queue[i].Val}, temp...)
-            }
-            if queue[i].Left != nil {
-                queue = append(queue, queue[i].Left)
-            }
-            if queue[i].Right != nil {
-                queue = append(queue, queue[i].Right)
-            }
-        }
-        flag = !flag
-        queue = queue[n:]
-        res = append(res, temp)
+    if root.Left == nil {
+        return minDepth(root.Right) + 1
     }
-
-    return res
+    if root.Right == nil {
+        return minDepth(root.Left) + 1
+    }
+    
+    return min(minDepth(root.Left)+1, minDepth(root.Right)+1)
 }
-</code></pre><blockquote><p>原文地址：<a href=https://zhwjimmy.github.io/post/leetcode/103-binary-tree-zigzag-level-order-traversal>103. 二叉树的锯齿形层序遍历</a></p></blockquote><hr><ul class=pager><li class=previous><a href=/post/leetcode/107-binary-tree-level-order-traversal-ii/ data-toggle=tooltip data-placement=top title="107. 二叉树的层序遍历 II">&larr;
-前一篇</a></li><li class=next><a href=/post/leetcode/100-same-tree/ data-toggle=tooltip data-placement=top title="100. 相同的树">下一篇 &rarr;</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
+
+func min(x, y int) int {
+    if x &gt; y {
+        return y
+    } else {
+        return x
+    }
+}
+</code></pre><h4 id=代码解析>代码解析</h4><p>在代码中，我们定义了 minDepth 函数来递归地访问二叉树中的每个节点，并求出最小深度。</p><p>在 minDepth 函数中，如果当前节点为空，则返回 0。这是因为空节点没有子树，所以它的最小深度应该是 0。</p><p>如果当前节点只有左子树或右子树，则返回左子树或右子树的最小深度加 1。因为这时左子树或右子树中肯定有一个叶子节点，所以这棵子树的最小深度就是叶子节点到这个节点的路径长度，即长度加1。</p><p>如果当前节点有左右两个子树，则返回左右子树的最小深度的最小值加 1。因为它们都有叶子节点，所以最小深度为左右子树中较小的那个加1。</p><p>这样我们就能遍历所有节点,求出左右子树最小深度，并得到整棵树的最小深度。</p><h4 id=时间复杂度分析>时间复杂度分析</h4><p>对于每个节点，我们只会访问它一次，所以时间复杂度是 O(N)，其中 N 是二叉树中的节点数。</p><h4 id=空间复杂度分>空间复杂度分</h4><p>空间复杂度取决于递归调用 minDepth 函数时产生的调用栈深度。对于一棵平衡二叉树，每个节点的左右子树高度差不会超过 1，所以调用栈的深度是 O(logN) 级别的。因此，空间复杂度也是 O(logN)。</p><p>但是如果这棵树是链型结构，空间复杂度就是 O(N),因为所有节点都在最左边或最右边。</p><p>其中 N 是二叉树中的节点数。</p><blockquote><p>原文地址：<a href=https://zhwjimmy.github.io/post/leetcode/111-minimum-depth-of-binary-tree>111. 二叉树的最小深度</a></p></blockquote><hr><ul class=pager><li class=previous><a href=/post/leetcode/110-balanced-binary-tree/ data-toggle=tooltip data-placement=top title="110. 平衡二叉树">&larr;
+前一篇</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
 visible-lg-block
 sidebar-container
 catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
