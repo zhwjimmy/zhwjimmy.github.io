@@ -16,16 +16,16 @@ col-md-10 col-md-offset-1
 post-container"><p>遍历二叉树指的是在二叉树的每个节点上都执行某个操作。二叉树遍历有三种常用的方法：前序遍历、中序遍历和后序遍历。</p><p>前序遍历：
 在前序遍历中，我们先访问根节点，然后递归地遍历左子树，再递归地遍历右子树。</p><p>中序遍历：
 在中序遍历中，我们先递归地遍历左子树，然后访问根节点，再递归地遍历右子树。</p><p>后序遍历：
-在后序遍历中，我们先递归地遍历左子树，再递归地遍历右子树，然后访问根节点。</p><p>二叉树的遍历可以用递归的方式来实现，也可以用非递归的方式来实现，如果使用非递归的方式实现，可以使用栈来帮助遍历。</p><p>本题代码实现如下：</p><pre tabindex=0><code>func inorderTraversal(root *TreeNode) []int {
+在后序遍历中，我们先递归地遍历左子树，再递归地遍历右子树，然后访问根节点。</p><p>二叉树的遍历可以用递归的方式来实现，也可以用非递归的方式来实现，如果使用非递归的方式实现，可以使用栈来帮助遍历。</p><p>本题代码实现如下：</p><pre tabindex=0><code>func preorderTraversal(root *TreeNode) []int {
     var result []int
 
-	if root != nil {
+    if root != nil {
         result = append(result, root.Val)
-		result = append(result, inorderTraversal(root.Left)...)
-		result = append(result, inorderTraversal(root.Right)...)
-	}
+        result = append(result, preorderTraversal(root.Left)...)
+        result = append(result, preorderTraversal(root.Right)...)
+    }
 
-	return result
+    return result
 }
 </code></pre><blockquote><p>原文地址：<a href=https://zhwjimmy.github.io/post/leetcode/144-binary-tree-preorder-traversal>144. 二叉树的前序遍历</a></p></blockquote><hr><ul class=pager><li class=previous><a href=/post/leetcode/94-binary-tree-inorder-traversal/ data-toggle=tooltip data-placement=top title="94. 二叉树的中序遍历">&larr;
 前一篇</a></li><li class=next><a href=/post/leetcode/145-binary-tree-postorder-traversal/ data-toggle=tooltip data-placement=top title="145. 二叉树的后序遍历">下一篇 &rarr;</a></li></ul></div><div class="col-lg-2 col-lg-offset-0

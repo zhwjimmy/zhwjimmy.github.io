@@ -16,16 +16,16 @@ col-md-10 col-md-offset-1
 post-container"><p>后序遍历的顺序是左-右-根，所以先遍历左子树，再遍历右子树，最后访问根节点。</p><p>代码实现如下：</p><pre tabindex=0><code>func postorderTraversal(root *TreeNode) []int {
     var result []int
 
-	if root != nil {
-		result = append(result, postorderTraversal(root.Left)...)
-		result = append(result, postorderTraversal(root.Right)...)
+    if root != nil {
+        result = append(result, postorderTraversal(root.Left)...)
+        result = append(result, postorderTraversal(root.Right)...)
         result = append(result, root.Val)
-	}
+    }
 
-	return result
+    return result
 }
 </code></pre><blockquote><p>原文地址：<a href=https://zhwjimmy.github.io/post/leetcode/145-binary-tree-postorder-traversal>145. 二叉树的后序遍历</a></p></blockquote><hr><ul class=pager><li class=previous><a href=/post/leetcode/144-binary-tree-preorder-traversal/ data-toggle=tooltip data-placement=top title="144. 二叉树的前序遍历">&larr;
-前一篇</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
+前一篇</a></li><li class=next><a href=/post/leetcode/102-binary-tree-level-order-traversal/ data-toggle=tooltip data-placement=top title="102. 二叉树的层序遍历">下一篇 &rarr;</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
 visible-lg-block
 sidebar-container
 catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2

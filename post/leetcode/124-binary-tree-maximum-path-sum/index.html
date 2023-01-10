@@ -19,24 +19,24 @@ post-container"><p>二叉树中的最大路径和问题指的是，给定一棵�
 最后，我们将求出的三个路径和取最大值，并将其与全局最大路径和 maxSum 进行比较，将较大的值赋给 maxSum。</p><p>代码实现如下：</p><pre tabindex=0><code>var maxSum int
 
 func maxPathSum(root *TreeNode) int {
-	maxSum = math.MinInt32
-	handle(root)
-	return maxSum
+    maxSum = math.MinInt32
+    handle(root)
+    return maxSum
 }
 
 func handle(root *TreeNode) int {
-	if root == nil {
-		return 0
-	}
-	leftMax := max(0, handle(root.Left))
-	rightMax := max(0, handle(root.Right))
+    if root == nil {
+        return 0
+    }
+    leftMax := max(0, handle(root.Left))
+    rightMax := max(0, handle(root.Right))
 
-	sum := root.Val + leftMax + rightMax
-	if sum &gt; maxSum {
-		maxSum = sum
-	}
+    sum := root.Val + leftMax + rightMax
+    if sum &gt; maxSum {
+        maxSum = sum
+    }
 
-	return root.Val + max(leftMax, rightMax)
+    return root.Val + max(leftMax, rightMax)
 }
 
 func max(x, y int) int {

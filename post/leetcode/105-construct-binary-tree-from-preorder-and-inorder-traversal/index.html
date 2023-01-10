@@ -15,18 +15,18 @@ Monday, January 9, 2023</span></div></div></div></div></header><article><div cla
 col-md-10 col-md-offset-1
 post-container"><p>可以使用递归的方法来构造二叉树。假设给定的前序遍历序列为 preorder 和中序遍历序列为 inorder。</p><p>首先，我们可以通过前序遍历序列的第一个元素来找到根节点。然后，我们在中序遍历序列中找到根节点的位置，这样就可以将中序遍历序列划分为左子树和右子树。在划分后的左子树和右子树中，我们可以通过前序遍历序列中的元素来构造左子树和右子树。</p><p>代码实现如下：</p><pre tabindex=0><code>func buildTree(preorder []int, inorder []int) *TreeNode {
     if len(preorder) == 0 || len(inorder) == 0 {
-		return nil
-	}
+        return nil
+    }
 
-	root := &amp;TreeNode{Val: preorder[0]}
-	for pos, node := range inorder {
-		if node == root.Val {
-			root.Left = buildTree(preorder[1:pos+1], inorder[:pos])
-			root.Right = buildTree(preorder[pos+1:], inorder[pos+1:])
-			break
-		}
-	}
-	return root
+    root := &amp;TreeNode{Val: preorder[0]}
+    for pos, node := range inorder {
+        if node == root.Val {
+            root.Left = buildTree(preorder[1:pos+1], inorder[:pos])
+            root.Right = buildTree(preorder[pos+1:], inorder[pos+1:])
+            break
+        }
+    }
+    return root
 }
 </code></pre><blockquote><p>原文地址：<a href=https://zhwjimmy.github.io/post/leetcode/105-construct-binary-tree-from-preorder-and-inorder-traversal>105. 从前序与中序遍历序列构造二叉树</a></p></blockquote><hr><ul class=pager><li class=previous><a href=/post/leetcode/124-binary-tree-maximum-path-sum/ data-toggle=tooltip data-placement=top title="124. 二叉树中的最大路径和">&larr;
 前一篇</a></li><li class=next><a href=/post/leetcode/106-construct-binary-tree-from-inorder-and-postorder-traversal/ data-toggle=tooltip data-placement=top title="106. 从中序与后序遍历序列构造二叉树">下一篇 &rarr;</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
