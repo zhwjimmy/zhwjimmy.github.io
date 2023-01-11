@@ -44,12 +44,13 @@ func min(x, y int) int {
     }
 }
 </code></pre><h4 id=代码解析>代码解析</h4><p>在代码中，我们定义了 minDepth 函数来递归地访问二叉树中的每个节点，并求出最小深度。</p><p>在 minDepth 函数中，如果当前节点为空，则返回 0。这是因为空节点没有子树，所以它的最小深度应该是 0。</p><p>如果当前节点只有左子树或右子树，则返回左子树或右子树的最小深度加 1。因为这时左子树或右子树中肯定有一个叶子节点，所以这棵子树的最小深度就是叶子节点到这个节点的路径长度，即长度加1。</p><p>如果当前节点有左右两个子树，则返回左右子树的最小深度的最小值加 1。因为它们都有叶子节点，所以最小深度为左右子树中较小的那个加1。</p><p>这样我们就能遍历所有节点,求出左右子树最小深度，并得到整棵树的最小深度。</p><h4 id=时间复杂度分析>时间复杂度分析</h4><p>对于每个节点，我们只会访问它一次，所以时间复杂度是 O(N)，其中 N 是二叉树中的节点数。</p><h4 id=空间复杂度分>空间复杂度分</h4><p>空间复杂度取决于递归调用 minDepth 函数时产生的调用栈深度。对于一棵平衡二叉树，每个节点的左右子树高度差不会超过 1，所以调用栈的深度是 O(logN) 级别的。因此，空间复杂度也是 O(logN)。</p><p>但是如果这棵树是链型结构，空间复杂度就是 O(N),因为所有节点都在最左边或最右边。</p><p>其中 N 是二叉树中的节点数。</p><blockquote><p>原文地址：<a href=https://zhwjimmy.github.io/post/leetcode/111-minimum-depth-of-binary-tree>111. 二叉树的最小深度</a></p></blockquote><hr><ul class=pager><li class=previous><a href=/post/leetcode/110-balanced-binary-tree/ data-toggle=tooltip data-placement=top title="110. 平衡二叉树">&larr;
-前一篇</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
+前一篇</a></li><li class=next><a href=/post/database/mysql/mysql-query-process/ data-toggle=tooltip data-placement=top title="MySQL文章系列（一） 查询过程">下一篇 &rarr;</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
 visible-lg-block
 sidebar-container
 catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
 sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5><a href=/tags/>TAGS</a></h5><div class=tags><a href=/tags/leetcode title=leetcode>leetcode</a>
+<a href=/tags/mysql title=mysql>mysql</a>
 <a href=/tags/%E4%BA%8C%E5%8F%89%E6%A0%91 title=二叉树>二叉树</a>
 <a href=/tags/%E6%8A%80%E6%9C%AF title=技术>技术</a>
 <a href=/tags/%E6%95%99%E7%A8%8B title=教程>教程</a>

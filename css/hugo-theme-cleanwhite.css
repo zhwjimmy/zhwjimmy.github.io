@@ -148,9 +148,8 @@ pre code{
     margin:30px 0 10px
 }
 .post-container h5{
-    font-size:19px;
+    font-size:18px;
     font-weight:600;
-    color:gray
 }
 .post-container h5+p{
     margin-top:5px
