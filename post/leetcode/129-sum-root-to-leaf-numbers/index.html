@@ -1,4 +1,4 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:site_name" content="松溪夜谈"><meta property="og:type" content="article"><meta name=title content="Leetcode题型分类总结"><meta name=description content><link rel="shortcut icon" href=/img/favicon.ico><title>Leetcode题型分类总结 | 松溪夜谈</title><link rel=canonical href=/post/leetcode/leetcode-summary/><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/hugo-theme-cleanwhite.min.css><link rel=stylesheet href=/css/zanshang.css><link href=https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css rel=stylesheet type=text/css><script src=/js/jquery.min.js></script>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:site_name" content="松溪夜谈"><meta property="og:type" content="article"><meta name=title content="129. 求根节点到叶节点数字之和"><meta name=description content><link rel="shortcut icon" href=/img/favicon.ico><title>129. 求根节点到叶节点数字之和 | 松溪夜谈</title><link rel=canonical href=/post/leetcode/129-sum-root-to-leaf-numbers/><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/hugo-theme-cleanwhite.min.css><link rel=stylesheet href=/css/zanshang.css><link href=https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css rel=stylesheet type=text/css><script src=/js/jquery.min.js></script>
 <script src=/js/bootstrap.min.js></script>
 <script src=/js/hux-blog.min.js></script>
 <script src=/js/lazysizes.min.js></script></head><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
@@ -7,13 +7,42 @@
 <span class=icon-bar></span>
 <span class=icon-bar></span></button>
 <a class=navbar-brand href=/>松溪夜谈</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/>All Posts</a></li><li><a href=/categories/tech>tech</a></li><li><a href=/archive/>ARCHIVE</a></li><li><a href=/tags/>TAGS</a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse");$toggle.addEventListener("click",handleMagic);function handleMagic(){$navbar.className.indexOf("in")>0?($navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)):($collapse.style.height="auto",$navbar.className+=" in")}</script><style type=text/css>header.intro-header{background-image:url(https://i.imgtg.com/2023/01/06/GKiaC.jpg)}</style><header class=intro-header><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><div class=tags><a class=tag href=/tags/%E9%9D%A2%E8%AF%95 title=面试>面试</a>
-<a class=tag href=/tags/leetcode title=leetcode>leetcode</a></div><h1>Leetcode题型分类总结</h1><h2 class=subheading>Leetcode Summary</h2><span class=meta>Posted by
+<a class=tag href=/tags/leetcode title=leetcode>leetcode</a>
+<a class=tag href=/tags/%E4%BA%8C%E5%8F%89%E6%A0%91 title=二叉树>二叉树</a></div><h1>129. 求根节点到叶节点数字之和</h1><h2 class=subheading>Sum Root to Leaf Numbers</h2><span class=meta>Posted by
 松溪
 on
-Monday, January 9, 2023</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
+Thursday, January 12, 2023</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
-post-container"><h4 id=二叉树>二叉树</h4><ul><li><p><a href=/post/leetcode/144-binary-tree-preorder-traversal>144. 二叉树的前序遍历</a></p></li><li><p><a href=/post/leetcode/94-binary-tree-inorder-traversal>94. 二叉树的中序遍历</a></p></li><li><p><a href=/post/leetcode/145-binary-tree-postorder-traversal>145. 二叉树的后序遍历</a></p></li><li><p><a href=/post/leetcode/102-binary-tree-level-order-traversal>102. 二叉树的层序遍历</a></p></li><li><p><a href=/post/leetcode/107-binary-tree-level-order-traversal-ii>107. 二叉树的层序遍历 II</a></p></li><li><p><a href=/post/leetcode/103-binary-tree-zigzag-level-order-traversal>103. 二叉树的锯齿形层序遍历</a></p></li><li><p><a href=/post/leetcode/100-same-tree>100. 相同的树</a></p></li><li><p><a href=/post/leetcode/110-balanced-binary-tree>110. 平衡二叉树</a></p></li><li><p><a href=/post/leetcode/maximum-depth-of-binary-tree>104. 二叉树的最大深度</a></p></li><li><p><a href=/post/leetcode/111-minimum-depth-of-binary-tree>111. 二叉树的最小深度</a></p></li><li><p><a href=/post/leetcode/112-path-sum>112. 路径总和</a></p></li><li><p><a href=/post/leetcode/113-path-sum-ii>113. 路径总和 II</a></p></li><li><p><a href=/post/leetcode/437-path-sum-iii>437. 路径总和 III</a></p></li><li><p><a href=/post/leetcode/124-binary-tree-maximum-path-sum>124. 二叉树中的最大路径和</a></p></li><li><p><a href=/post/leetcode/257-binary-tree-paths>257. 二叉树的所有路径</a></p></li><li><p><a href=/post/leetcode/404-sum-of-left-leaves>404. 左叶子之和</a></p></li><li><p><a href=/post/leetcode/129-sum-root-to-leaf-numbers>129. 求根节点到叶节点数字之和</a></p></li><li><p><a href=/post/leetcode/105-construct-binary-tree-from-preorder-and-inorder-traversal>105. 从前序与中序遍历序列构造二叉树</a></p></li><li><p><a href=/post/leetcode/106-construct-binary-tree-from-inorder-and-postorder-traversal>106. 从中序与后序遍历序列构造二叉树</a></p></li><li><p><a href=/post/leetcode/99-recover-binary-search-tree>99. 恢复二叉搜索树</a></p></li></ul><blockquote><p>原文地址：<a href=https://zhwjimmy.github.io/post/leetcode/leetcode-summary>Leetcode题型分类总结</a></p></blockquote><hr><ul class=pager><li class=previous><a href=/post/hugo/ data-toggle=tooltip data-placement=top title="如何利用Github Pages和Hugo搭建个人博客">&larr;
-前一篇</a></li><li class=next><a href=/post/leetcode/124-binary-tree-maximum-path-sum/ data-toggle=tooltip data-placement=top title="124. 二叉树中的最大路径和">下一篇 &rarr;</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
+post-container"><p>给定一个二叉树的根节点 root ，树中每个节点都存放有一个 0 到 9 之间的数字。计算从根节点到叶节点生成的 所有数字之和 。</p><p>代码实现如下：</p><pre tabindex=0><code>/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func sumNumbers(root *TreeNode) int {
+    if root == nil {
+        return 0
+    }
+
+    return dfs(root, 0)
+}
+
+func dfs(root *TreeNode, sum int) int {
+    if root == nil {
+        return 0
+    }
+
+    sum = sum*10 + root.Val
+    if root.Left == nil &amp;&amp; root.Right == nil {
+        return sum
+    }
+
+    return dfs(root.Left, sum) + dfs(root.Right, sum)
+}
+</code></pre><p>这里使用了深度优先搜索(DFS)算法，递归遍历每一条从根节点到叶子节点的路径。在递归过程中，每经过一个节点，就将该节点的值乘上10并加上该节点的值。当遍历到一个叶子节点时，直接返回当前的和。</p><p>最后返回左右子树递归结果之和。</p><blockquote><p>原文地址：<a href=https://zhwjimmy.github.io/post/leetcode/129-sum-root-to-leaf-numbers>129. 求根节点到叶节点数字之和</a></p></blockquote><hr><ul class=pager><li class=previous><a href=/post/leetcode/437-path-sum-iii/ data-toggle=tooltip data-placement=top title="437. 路径总和 III">&larr;
+前一篇</a></li><li class=next><a href=/post/leetcode/404-sum-of-left-leaves/ data-toggle=tooltip data-placement=top title="404. 左叶子之和">下一篇 &rarr;</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
 visible-lg-block
 sidebar-container
 catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
