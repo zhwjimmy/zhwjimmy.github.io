@@ -13,7 +13,47 @@
 on
 Wednesday, January 11, 2023</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
-post-container"><blockquote><p>原文地址：<a href=https://zhwjimmy.github.io/post/leetcode/113-path-sum-ii>113. 路径总和 II</a></p></blockquote><hr><ul class=pager><li class=previous><a href=/post/leetcode/112-path-sum/ data-toggle=tooltip data-placement=top title="112. 路径总和">&larr;
+post-container"><p>代码实现如下：</p><pre tabindex=0><code>/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func pathSum(root *TreeNode, targetSum int) [][]int {
+    var res [][]int
+	if root == nil {
+		return res
+	}
+
+	if root.Left == nil &amp;&amp; root.Right == nil &amp;&amp; targetSum == root.Val {
+		res = append(res, []int{root.Val})
+	}
+
+	var path []int
+	tmpLeft := pathSum(root.Left, targetSum-root.Val)
+	path = append(path, root.Val)
+	if len(tmpLeft) &gt; 0 {
+		for i := 0; i &lt; len(tmpLeft); i++ {
+			tmpLeft[i] = append(path, tmpLeft[i]...)
+		}
+		res = append(res, tmpLeft...)
+	}
+
+	path = []int{}
+	tmpRight := pathSum(root.Right, targetSum-root.Val)
+	path = append(path, root.Val)
+	if len(tmpRight) &gt; 0 {
+		for i := 0; i &lt; len(tmpRight); i++ {
+			tmpRight[i] = append(path, tmpRight[i]...)
+		}
+		res = append(res, tmpRight...)
+	}
+
+	return res
+}
+</code></pre><blockquote><p>原文地址：<a href=https://zhwjimmy.github.io/post/leetcode/113-path-sum-ii>113. 路径总和 II</a></p></blockquote><hr><ul class=pager><li class=previous><a href=/post/leetcode/112-path-sum/ data-toggle=tooltip data-placement=top title="112. 路径总和">&larr;
 前一篇</a></li><li class=next><a href=/post/leetcode/104-maximum-depth-of-binary-tree/ data-toggle=tooltip data-placement=top title="104. 二叉树的最大深度">下一篇 &rarr;</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
 visible-lg-block
 sidebar-container
