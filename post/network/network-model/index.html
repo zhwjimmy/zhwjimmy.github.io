@@ -13,12 +13,13 @@ on
 Monday, February 6, 2023</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
 post-container"><h3 id=io多路复用>IO多路复用</h3><p>一个服务端进程可以同时处理多个套接字描述符。</p><ul><li>多路：多个客户端连接。连接就是套接字描述符</li><li>复用：一个进程就可以实现同时处理多个客户端的连接</li></ul><h4 id=select>select</h4><h4 id=poll>poll</h4><h4 id=epoll>epoll</h4><h4 id=io多路复用在redis中的应用>IO多路复用在redis中的应用</h4><p>Redis 服务器处理的事件分为时间事件和文件事件两类。</p><p>IO 多路复用程序负责监听多个套接字并向文件事件分派器传送那些产生了事件的套接字。文件事件分派器接收 IO 多路复用程序传来的套接字，并根据套接字产生的事件的类型，调用相应的事件处理器。</p><p><img src=/static/img/network/network-redis.png alt=IO多路复用在redis中的应用></p><h4 id=参考文档>参考文档</h4><ul><li><a href=https://xie.infoq.cn/article/b3816e9fe3ac77684b4f29348>https://xie.infoq.cn/article/b3816e9fe3ac77684b4f29348</a></li><li><a href=https://blog.csdn.net/a745233700/article/details/113488673>https://blog.csdn.net/a745233700/article/details/113488673</a></li></ul><blockquote><p>原文地址：<a href=https://zhwjimmy.github.io/post/network/network-model>网络模型</a></p></blockquote><hr><ul class=pager><li class=previous><a href=/post/database/redis/redis/ data-toggle=tooltip data-placement=top title=Redis>&larr;
-前一篇</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
+前一篇</a></li><li class=next><a href=/post/programming/go/go-channel/ data-toggle=tooltip data-placement=top title=Go系列文章之通道>下一篇 &rarr;</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
 visible-lg-block
 sidebar-container
 catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
-sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5><a href=/tags/>TAGS</a></h5><div class=tags><a href=/tags/golang title=golang>golang</a>
+sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5><a href=/tags/>TAGS</a></h5><div class=tags><a href=/tags/go title=go>go</a>
+<a href=/tags/golang title=golang>golang</a>
 <a href=/tags/leetcode title=leetcode>leetcode</a>
 <a href=/tags/mq title=mq>mq</a>
 <a href=/tags/mysql title=mysql>mysql</a>
