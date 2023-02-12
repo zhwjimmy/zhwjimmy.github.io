@@ -40,7 +40,7 @@ channel 最核心的数据结构是 sudog。sudog 代表了一个在等待队列
 </code></pre><p>创建channel，在堆内存中实例化一个hchan的结构体，并返回一个ch指针。</p><h4 id=发送数据>发送数据</h4><p>同步发送（有接收者，没有缓冲队列或者缓冲队列为空）</p><ol><li>从接收队列中取出头部第一个非空的sudog</li><li>将数据直接拷贝到接收方（没有锁channel，直接把数据从G1拷贝到G2的栈中）</li><li>将G绑定到本地可运行的队列中，等待下次调度便立即执行</li></ol><p>异步发送（缓冲队列不为空）
 将数据拷贝到缓冲区的末尾</p><p>阻塞发送（没有接收者，没有缓冲队列或者缓冲队列已满）</p><ol><li>G再进行send操作时，主动调用Go的调度器，让出占用的M资源，让其他G去使用</li><li>G和需要发送的数据打包成sudog对象保存在sendq队列中</li></ol><h4 id=接收数据>接收数据</h4><p>同步接收（有发送者，没有缓冲队列或缓冲队列为空）</p><ol><li>从发送队列中取出头部第一个非空的sudog</li><li>没有缓冲区，直接从发送方接收值；否则，从缓冲区头部取值，再将发送方的数据拷贝到缓冲区的末尾</li><li>将G绑定到本地可运行的队列中，等待下次调度便立即执行</li></ol><p>异步接收
 从缓冲区头部获取数据</p><p>阻塞接收（没有发送者，没有缓冲队列或缓冲队列为空）</p><ol><li>G主动调用Go的调度器，让出占用的M资源，让其他G去使用</li><li>G打包成sudog对象保存在recvq队列中</li></ol><h3 id=参考文档>参考文档</h3><ul><li><a href=https://halfrost.com/go_channel/#toc-10>https://halfrost.com/go_channel/#toc-10</a></li><li><a href=https://i6448038.github.io/2019/04/11/go-channel/>https://i6448038.github.io/2019/04/11/go-channel/</a></li></ul><blockquote><p>原文地址：<a href=https://zhwjimmy.github.io/post/programming/go/go-channel>Go系列文章之通道</a></p></blockquote><hr><ul class=pager><li class=previous><a href=/post/network/network-model/ data-toggle=tooltip data-placement=top title=网络模型>&larr;
-前一篇</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
+前一篇</a></li><li class=next><a href=/post/programming/go/go-gmp/ data-toggle=tooltip data-placement=top title=Go系列文章之调度机制>下一篇 &rarr;</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
 visible-lg-block
 sidebar-container
 catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
