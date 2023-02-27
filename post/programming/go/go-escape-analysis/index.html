@@ -13,7 +13,7 @@ on
 Sunday, February 12, 2023</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
 post-container"><h3 id=什么是逃逸分析>什么是逃逸分析</h3><p>编译阶段，分析指针动态范围的方法被称之为逃逸分析。当一个对象的指针被多个方法或线程引用时，称这个指针发生了逃逸。逃逸分析决定一个变量是分配在栈上还是堆上。</p><h3 id=逃逸分析作用>逃逸分析作用</h3><p>合理分配变量。</p><p>栈分配内存快，函数结束时自动回收；对适合不可以预知大小的内存分配，但分配速度较慢，需要GC，容易形成内存碎片。</p><p>通过逃逸分析，尽量将不需要分配到堆上的变量分配到栈上，降低系统压力，提升性能。</p><h3 id=场景罗列>场景罗列</h3><ul><li>变量在函数外部没有引用，优先放到栈上<ul><li>还要看变量大小</li></ul></li><li>存在引用，必定放到堆上</li><li>interface{}动态类型<ul><li>空接口interface{}可以表示任意的类型，如果函数参数为interface{}，编译期间很难确定参数的具体类型，会发生逃逸</li></ul></li></ul><h3 id=如何利用逃逸分析提升性能>如何利用逃逸分析提升性能</h3><p>传值 vs 传指针</p><ul><li>传指针可以减少值的拷贝，但会导致内存分配逃逸到堆中，增加GC负担。</li><li>对于需要修改原值，或占用内存比较大的结构体，选择传指针；对于只读的占用内存较小的结构体，传值可以获得更好的性能。</li></ul><blockquote><p>原文地址：<a href=https://zhwjimmy.github.io/post/programming/go/go-escape-analysis>Go系列文章之逃逸分析</a></p></blockquote><hr><ul class=pager><li class=previous><a href=/post/programming/go/go-data-container/ data-toggle=tooltip data-placement=top title=Go系列文章之数据容器>&larr;
-前一篇</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
+前一篇</a></li><li class=next><a href=/post/trade/chatgpt/ data-toggle=tooltip data-placement=top title=ChatGPT>下一篇 &rarr;</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
 visible-lg-block
 sidebar-container
 catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
@@ -25,6 +25,7 @@ sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5><a href=/tags/>T
 <a href=/tags/mysql title=mysql>mysql</a>
 <a href=/tags/network title=network>network</a>
 <a href=/tags/redis title=redis>redis</a>
+<a href=/tags/trade title=trade>trade</a>
 <a href=/tags/%E4%BA%8C%E5%8F%89%E6%A0%91 title=二叉树>二叉树</a>
 <a href=/tags/%E6%8A%80%E6%9C%AF title=技术>技术</a>
 <a href=/tags/%E6%95%99%E7%A8%8B title=教程>教程</a>
